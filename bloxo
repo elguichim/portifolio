@@ -1,0 +1,61 @@
+// MovableBlock.tsx
+import React, { useState } from "react";
+import "./MovableBlock.css";
+
+const MovableBlock: React.FC = () => {
+  const [position, setPosition] = useState({ x: 100, y: 100 });
+  const [dragging, setDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setDragging(true);
+    setOffset({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (dragging) {
+      setPosition({
+        x: e.clientX - offset.x,
+        y: e.clientY - offset.y,
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDragging(false);
+  };
+
+  return (
+    <div
+      className="movable-block"
+      style={{ left: position.x, top: position.y }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+    >
+      📝 Anotação
+    </div>
+  );
+};
+
+export default MovableBlock;
+
+.movable-block {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: #fffae6;
+  border: 2px solid #f0c000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+  font-weight: bold;
+}
+

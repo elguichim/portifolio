@@ -1,0 +1,42 @@
+✅ Três projetos voltados para organização
+
+
+=============================================================
+Dashboard financeiro  
+Um painel para controle de gastos e receitas.
+
+Gráficos de entradas e saídas mensais.
+
+Categorias de despesas (alimentação, transporte, lazer, etc.).
+
+Exportação de relatórios simples (CSV ou PDF).
+
+Mostra domínio de React para visualização e Node.js para persistência de dados.
+
+=============================================================
+Aplicativo de tarefas profissionais  
+Um To-Do List avançado voltado para trabalho.
+
+Organização por projetos e prazos.
+
+Sistema de prioridade (alta, média, baixa).
+
+Notificações ou lembretes.
+
+Integração com calendário.
+
+Demonstra CRUD completo e boas práticas de UX.
+
+=============================================================
+Planner diário interativo  
+Uma agenda digital para planejar o dia.
+
+Blocos de horário para compromissos.
+
+Espaço para metas pessoais e profissionais.
+
+Visualização semanal/mensal.
+
+Possibilidade de marcar tarefas concluídas.
+
+Mostra habilidade em CSS avançado e organização de layout.

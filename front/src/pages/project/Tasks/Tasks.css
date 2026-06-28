@@ -1,0 +1,141 @@
+/* Container principal da página de tarefas */
+.tasks {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Título principal */
+.tasks h1 {
+  text-align: center;
+  color: #222;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Campo de input para nova tarefa */
+.tasks input[type="text"] {
+  width: 65%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.tasks input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botões gerais */
+.tasks button {
+  padding: 12px 18px;
+  background: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Lista de tarefas */
+.tasks ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 25px;
+}
+
+.tasks li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  margin-bottom: 12px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.tasks li span {
+  cursor: pointer;
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #000000;
+}
+
+.tasks li span.completed {
+  text-decoration: line-through;
+  color: #000000;
+}
+
+.tasks li button {
+  background: #dc3545;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================== Bloco móvel (post-it) ================== */
+.movable-block {
+  position: absolute;
+  width: 200px;
+  min-height: 150px;
+  border: 2px solid rgba(0,0,0,0.1); /* borda suave */
+  border-radius: 6px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: grab;
+  user-select: none;
+  font-weight: bold;
+  padding: 10px;
+  color: #000000;
+  transform: rotate(-1deg); /* leve inclinação para parecer colado */
+}
+
+/* Cabeçalho do post-it */
+.movable-block h1 {
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  font-weight: bold;
+  color: #222;
+}
+
+/* ================== Checklist dentro do post-it ================== */
+.task-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.task-line input[type="checkbox"] {
+  accent-color: #555; /* cor discreta para o check */
+  transform: scale(1.2);
+}
+
+.task-line input[type="text"] {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2); /* linha clara */
+  background: transparent;
+  font-size: 0.95rem;
+  color: #222;
+  padding: 4px 2px;
+  border-radius: 0; /* quadrado */
+}
+
+.task-line input[type="text"]::placeholder {
+  color: #aaa;
+}
