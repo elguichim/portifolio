@@ -1,0 +1,337 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  background-color: rgb(4, 5, 14);
+  color: rgb(238, 234, 234);
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+.header {
+  background-color: transparent;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  text-transform: uppercase;
+}
+
+.header ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header ul li a:hover {
+  color: #7e47ff;
+}
+
+/* ================= HOME ================= */
+.home {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80vh;   /* 🔹 altura controlada */
+  padding: 0 10%;
+  z-index: 1;
+  overflow: hidden;   /* 🔹 corta a luz fora da área */
+}
+
+/* 🔹 Div que segue o mouse */
+.light {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient( circle, rgba(126, 71, 255, 0.6) 0%, rgba(4, 5, 14, 0) 50%);
+  filter: blur(80px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite alternate ease-in-out;
+  z-index: 0;
+
+
+}
+
+/* 🔹 Linha inferior com efeito */
+.home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 8px;
+  background: #6a00ff;
+  filter: blur(2px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 🔹 Animação de pulsação */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+    filter: blur(30px);
+  }
+  100% {
+    opacity: 0.9;
+    filter: blur(50px);
+  }
+}
+
+/* Texto principal */
+.intro h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.intro h1 span {
+  color: #9a6bff;
+  text-shadow: 0 0 10px rgba(126, 71, 255, 0.8);
+}
+
+.intro button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #6a00ff, #9a6bff);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(126, 71, 255, 0.6);
+  transition: 0.3s;
+}
+
+.intro button:hover {
+  box-shadow: 0 0 25px rgba(126, 71, 255, 0.9);
+}
+
+/* Sobre mim */
+.about {
+  max-width: 40%;
+  text-align: left;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.about p {
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* ================= LINHA GRADIENTE ================= */
+.linha-gradient {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(126, 71, 255, 0.6) 50%,
+    transparent 100%
+  );
+}
+
+/* ================= PROJECTS ================= */
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.project-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.project-list::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(8px);
+  z-index: 0;
+}
+
+.project-item {
+  position: relative;
+  z-index: 1;
+  background-color: #33333360;
+  border: solid 2px #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  height: 300px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-item h3 {
+  border: solid 3px #ffffffc4;
+  padding: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.project-item p {
+  text-align: center;
+}
+
+/* ================= SKILLS ================= */
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.skill-item {
+  position: relative;
+  background-color: transparent;
+  color: white;
+  padding: 20px;
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(126, 71, 255, 0.6) 0%, rgba(4, 5, 14, 0) 50%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  filter: blur(40px);
+}
+
+.skill-item:hover::before {
+  opacity: 1;
+}
+
+.skill-item:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
+
+/* ================= CONTACT ================= */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  margin: 10%;
+  border: solid 3px #29106eb7;
+  border-radius: 10px;
+}
+
+.contact form {
+  text-align: center;
+}
+
+.contact form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #ffffff65;
+  background-color: transparent;
+  color: white;
+  width: 300px;
+  max-width: 100%;
+}
+
+.contact-info {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-info::before {
+  content: "";
+  flex: 1;
+  height: 4px;
+  margin-right: 10px;
+  background: linear-gradient(to right, transparent, rgba(126, 71, 255, 0.8));
+}
+
+.contact-info::after {
+  content: "";
+  flex: 1;
+  height: 4px;
+  margin-left: 10px;
+  background: linear-gradient(to left, transparent, rgba(126, 71, 255, 0.8));
+}
+
+.contact ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.contact ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background-color: transparent;
+  color: white;
+  border-top: solid 3px #ffffff1b;
+  padding: 10px;
+  text-align: center;
+}

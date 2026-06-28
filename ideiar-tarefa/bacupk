@@ -1,0 +1,128 @@
+
+// Importa o arquivo de estilos CSS específico para este componente
+import './Dashboard.css'
+
+// Importa o componente Chart (gráfico) que criamos em outra pasta
+import Chart from './components/Chart'
+
+// Importa o componente Transactions (lista de transações)
+import Transactions from './components/Transactions'
+
+// Importa o hook useState do React, que serve para criar estados (variáveis reativas)
+import { useState } from 'react'
+
+// Define um tipo (interface) para garantir que cada transação tenha:
+// - id numérico
+// - type que só pode ser 'Receita' ou 'Despesa'
+// - value numérico
+type Transaction = {
+  id: number
+  type: 'Receita' | 'Despesa'
+  value: number
+}
+
+// Função principal do componente Dashboard
+function Dashboard() {
+  // Cria um estado chamado transactions, que começa como lista vazia []
+  // setTransactions é a função que atualiza essa lista
+  const [transactions, setTransactions] = useState<Transaction[]>([])
+
+  // Cria um estado para guardar o tipo da transação escolhida no formulário
+  // Começa como 'Receita'
+  const [type, setType] = useState<'Receita' | 'Despesa'>('Receita')
+
+  // Cria um estado para guardar o valor digitado no formulário
+  const [value, setValue] = useState<number>(0)
+
+  // Calcula o total de receitas somando todos os valores onde type === 'Receita'
+  const totalReceitas = transactions
+    .filter(t => t.type === 'Receita')
+    .reduce((acc, t) => acc + t.value, 0)
+
+  // Calcula o total de despesas somando todos os valores onde type === 'Despesa'
+  const totalDespesas = transactions
+    .filter(t => t.type === 'Despesa')
+    .reduce((acc, t) => acc + t.value, 0)
+
+  // Calcula o saldo (receitas - despesas)
+  const saldo = totalReceitas - totalDespesas
+
+  // Função chamada quando o formulário é enviado
+  const addTransaction = (e: React.FormEvent) => {
+    e.preventDefault() // evita recarregar a página
+
+    if (value <= 0) return // impede valores inválidos
+
+    // Cria uma nova transação com id único, tipo e valor
+    const newTransaction: Transaction = {
+      id: transactions.length + 1,
+      type,
+      value,
+    }
+
+    // Atualiza a lista de transações adicionando a nova
+    setTransactions([...transactions, newTransaction])
+
+    // Reseta o campo de valor para 0
+    setValue(0)
+  }
+
+  // JSX (HTML dentro do React) que define o layout da página
+  return (
+    <div className="dashboard">
+      {/* Cabeçalho */}
+      <header className="dashboard-header">
+        <h1>Dashboard Financeiro</h1>
+        <p>Controle suas receitas e despesas aqui.</p>
+      </header>
+
+      {/* Cards de resumo */}
+      <section className="summary">
+        <div className="card receita">
+          <h3>Receitas</h3>
+          <p>R$ {totalReceitas}</p>
+        </div>
+        <div className="card despesa">
+          <h3>Despesas</h3>
+          <p>R$ {totalDespesas}</p>
+        </div>
+        <div className="card saldo">
+          <h3>Saldo</h3>
+          <p>R$ {saldo}</p>
+        </div>
+      </section>
+
+      {/* Formulário para adicionar transações */}
+      <section className="form-section">
+        <h2>Adicionar Transação</h2>
+        <form onSubmit={addTransaction} className="transaction-form">
+          {/* Select para escolher Receita ou Despesa */}
+          <select value={type} onChange={e => setType(e.target.value as 'Receita' | 'Despesa')}>
+            <option value="Receita">Receita</option>
+            <option value="Despesa">Despesa</option>
+          </select>
+
+          {/* Input para digitar o valor */}
+          <input
+            type="number"
+            value={value}
+            onChange={e => setValue(Number(e.target.value))}
+            placeholder="Valor"
+          />
+
+          {/* Botão para enviar o formulário */}
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      {/* Gráfico de proporção entre receitas e despesas */}
+      <Chart receitas={totalReceitas} despesas={totalDespesas} />
+
+      {/* Lista de transações */}
+      <Transactions data={transactions} />
+    </div>
+  )
+}
+
+// Exporta o componente para ser usado em App.tsx
+export default Dashboard
