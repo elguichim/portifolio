@@ -39,6 +39,16 @@ const ObjectList: React.FC<Props> = ({ onAdd }) => {
           </ul>
         )}
       </div>
+
+      {/* 🔧 NOVO: seção para tomadas */}
+      <div className="object-section">
+        <h3 onClick={() => toggleSection("tomadas")}>Tomadas</h3>
+        {openSection === "tomadas" && (
+          <ul>
+            <li onClick={() => onAdd("tomada")}>Tomada</li>
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
