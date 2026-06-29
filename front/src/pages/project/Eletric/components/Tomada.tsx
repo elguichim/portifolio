@@ -13,25 +13,16 @@ interface Props {
   onRemove: (id: number) => void;
 }
 
-const Lampada: React.FC<Props> = ({
-  id,
-  x,
-  y,
-  onDragMove,
-  onStartConnection,
-  onEndConnection,
-  snapToGrid,
-  onRemove,
-}) => {
-  const [lampImg] = useImage("/assets/lampada.png");
+const Tomada: React.FC<Props> = ({ id, x, y, onDragMove, onStartConnection, onEndConnection, snapToGrid, onRemove }) => {
+  const [socketImg] = useImage("/assets/tomada.png");
 
-  const width = 80;
-  const height = 80;
+  const width = 60;
+  const height = 60;
 
   return (
     <>
       <Image
-        image={lampImg}
+        image={socketImg}
         x={x}
         y={y}
         width={width}
@@ -43,9 +34,7 @@ const Lampada: React.FC<Props> = ({
           const snapped = snapToGrid(e.target.x(), e.target.y());
           e.target.x(snapped.x);
           e.target.y(snapped.y);
-
-          // 🔧 atualização imediata do estado
-          onDragMove(id, snapped.x, snapped.y);
+          onDragMove(id, snapped.x, snapped.y); // atualização imediata
         }}
         onDragEnd={(e) => {
           const snapped = snapToGrid(e.target.x(), e.target.y());
@@ -53,7 +42,6 @@ const Lampada: React.FC<Props> = ({
         }}
         onDblClick={() => onRemove(id)}
       />
-      {/* 🔧 Agora os círculos usam x e y atualizados em tempo real */}
       <Circle
         x={x - width / 2}
         y={y}
@@ -76,4 +64,4 @@ const Lampada: React.FC<Props> = ({
   );
 };
 
-export default Lampada;
+export default Tomada;

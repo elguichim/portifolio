@@ -3,6 +3,7 @@ import { Stage, Layer, Rect, Line, Circle } from "react-konva";
 import Lampada from "./components/Lampada";
 import Interruptor from "./components/Interruptor";
 import Disjuntor from "./components/Disjuntor";
+import Tomada from "./components/Tomada";   // 🔧 NOVO: importamos o componente Tomada
 import ObjectList from "./ui/ObjectList";
 
 interface Point {
@@ -14,7 +15,8 @@ interface ConnectionPath {
   points: Point[];
 }
 
-const GRID_SIZE = 40;
+// 🔧 ALTERAÇÃO: diminuímos o tamanho da célula da grade
+const GRID_SIZE = 20; // antes era 40
 
 const Eletric: React.FC = () => {
   const [connections, setConnections] = useState<ConnectionPath[]>([]);
@@ -35,7 +37,6 @@ const Eletric: React.FC = () => {
     if (tempPath) {
       const snapped = snapToGrid(x, y);
       const last = tempPath.points[tempPath.points.length - 1];
-      // Adiciona o ponto apenas se for diferente do último
       if (last.x !== snapped.x || last.y !== snapped.y) {
         setTempPath({ points: [...tempPath.points, snapped] });
       }
@@ -68,12 +69,10 @@ const Eletric: React.FC = () => {
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      {/* Lista lateral */}
       <div style={{ width: "200px", background: "#333", color: "#fff", padding: "10px" }}>
         <ObjectList onAdd={handleAddObject} />
       </div>
 
-      {/* Área de montagem */}
       <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
         <Stage
           width={800}
@@ -84,10 +83,8 @@ const Eletric: React.FC = () => {
           }}
         >
           <Layer>
-            {/* Fundo cinza claro */}
             <Rect x={0} y={0} width={800} height={600} fill="#eaeaea" />
 
-            {/* Grid cinza médio */}
             {Array.from({ length: 800 / GRID_SIZE }).map((_, i) =>
               Array.from({ length: 600 / GRID_SIZE }).map((_, j) => (
                 <Circle
@@ -101,7 +98,6 @@ const Eletric: React.FC = () => {
               ))
             )}
 
-            {/* Linhas fixas */}
             {connections.map((c, i) => (
               <Line
                 key={i}
@@ -114,7 +110,6 @@ const Eletric: React.FC = () => {
               />
             ))}
 
-            {/* Linha temporária */}
             {tempPath && (
               <Line
                 points={tempPath.points.flatMap(p => [p.x, p.y])}
@@ -124,7 +119,6 @@ const Eletric: React.FC = () => {
               />
             )}
 
-            {/* Renderização dinâmica dos objetos */}
             {objects.map((obj) => {
               if (obj.type === "lampada") {
                 return (
@@ -165,6 +159,19 @@ const Eletric: React.FC = () => {
                   />
                 );
               }
+              if (obj.type === "tomada") {   // 🔧 NOVO: adicionamos suporte ao componente Tomada
+                return (
+                  <Tomada
+                    key={obj.id}
+                    {...obj}
+                    onDragMove={handleDragMove}
+                    onStartConnection={handleStartConnection}
+                    onEndConnection={handleEndConnection}
+                    snapToGrid={snapToGrid}
+                    onRemove={handleRemoveObject}
+                  />
+                );
+              }
               return null;
             })}
           </Layer>
@@ -175,4 +182,3 @@ const Eletric: React.FC = () => {
 };
 
 export default Eletric;
- 

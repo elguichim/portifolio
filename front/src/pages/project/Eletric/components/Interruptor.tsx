@@ -13,20 +13,11 @@ interface Props {
   onRemove: (id: number) => void;
 }
 
-const GRID_SIZE = 40;
-
 const Interruptor: React.FC<Props> = ({ id, x, y, onDragMove, onStartConnection, onEndConnection, snapToGrid, onRemove }) => {
   const [switchImg] = useImage("/assets/interruptor.png");
 
-  const handleStart = (px: number, py: number) => {
-    const snapped = snapToGrid(px, py);
-    onStartConnection(snapped.x, snapped.y);
-  };
-
-  const handleEnd = (px: number, py: number) => {
-    const snapped = snapToGrid(px, py);
-    onEndConnection(snapped.x, snapped.y);
-  };
+  const width = 80;
+  const height = 40;
 
   return (
     <>
@@ -34,34 +25,40 @@ const Interruptor: React.FC<Props> = ({ id, x, y, onDragMove, onStartConnection,
         image={switchImg}
         x={x}
         y={y}
-        width={GRID_SIZE * 2}
-        height={GRID_SIZE}
+        width={width}
+        height={height}
+        offsetX={width / 2}
+        offsetY={height / 2}
         draggable
+        onDragMove={(e) => {
+          const snapped = snapToGrid(e.target.x(), e.target.y());
+          e.target.x(snapped.x);
+          e.target.y(snapped.y);
+          onDragMove(id, snapped.x, snapped.y); // atualização imediata
+        }}
         onDragEnd={(e) => {
           const snapped = snapToGrid(e.target.x(), e.target.y());
           onDragMove(id, snapped.x, snapped.y);
         }}
         onDblClick={() => onRemove(id)}
       />
-      {/* Ponto superior */}
       <Circle
-        x={x + GRID_SIZE}
-        y={y}
+        x={x}
+        y={y - height / 2}
         radius={6}
         fill="green"
         stroke="black"
-        onMouseDown={() => handleStart(x + GRID_SIZE, y)}
-        onMouseUp={() => handleEnd(x + GRID_SIZE, y)}
+        onMouseDown={() => onStartConnection(x, y - height / 2)}
+        onMouseUp={() => onEndConnection(x, y - height / 2)}
       />
-      {/* Ponto inferior */}
       <Circle
-        x={x + GRID_SIZE}
-        y={y + GRID_SIZE}
+        x={x}
+        y={y + height / 2}
         radius={6}
         fill="green"
         stroke="black"
-        onMouseDown={() => handleStart(x + GRID_SIZE, y + GRID_SIZE)}
-        onMouseUp={() => handleEnd(x + GRID_SIZE, y + GRID_SIZE)}
+        onMouseDown={() => onStartConnection(x, y + height / 2)}
+        onMouseUp={() => onEndConnection(x, y + height / 2)}
       />
     </>
   );
