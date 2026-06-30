@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import './index.css'
 
+// import de imagens!!!
+import whatsapp from "../assets/icones/WhatsApp.png"
+import instagram from "../assets/icones/Instagram.png"
+import facebook from "../assets/icones/facebook.png"
+
+
 
 function Home() {
   const homeRef = useRef<HTMLDivElement>(null)
@@ -59,10 +65,11 @@ function Home() {
         <div className="about">
           <h2>Sobre mim</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur efficitur.
-            Sed at ligula a enim efficitur bibendum. Curabitur ac felis nec nisi efficitur fermentum.
+            Sou desenvolvedor focado em criar soluções digitais modernas, com atenção ao design responsivo e à experiência do usuário.
+            Meu objetivo é transformar ideias em projetos funcionais e visualmente atraentes.
           </p>
         </div>
+
       </div>
 
       {/* PROJETOS */}
@@ -115,27 +122,58 @@ function Home() {
       {/* CONTATO */}
       <div className="contact" id="contact">
         <h2>Entre em contato</h2>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            const name = (document.getElementById("name") as HTMLInputElement).value
+            const message = (document.getElementById("message") as HTMLTextAreaElement).value
+            const phone = "5562993976071" // coloque seu número aqui
+
+            // Usando \n para quebra de linha
+            const rawText = `Olá, meu nome é ${name}.\n${message}`
+            const text = encodeURIComponent(rawText)
+
+            window.open(`https://wa.me/${phone}?text=${text}`, "_blank")
+          }}
+        >
           <div>
             <input type="text" id="name" name="name" placeholder="Seu nome" />
           </div>
           <div>
             <textarea id="message" name="message" placeholder="Sua mensagem"></textarea>
           </div>
-          <button type="submit">Enviar Mensagem</button>
+          <button type="submit">Enviar Mensagem
+            <img src={whatsapp} alt="WhatsApp" style={{ width: "20px", marginLeft: "8px" }} />
+          </button>
         </form>
         <div className="contact-info">ou</div>
-        <ul>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">WhatsApp</a></li>
-          <li><a href="#">Facebook</a></li>
+        <ul className="social-links">
+          <li>
+            <a href="#">
+              <img src={instagram} alt="Instagram" style={{ width: "40px", marginRight: "6px" }} />
+
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={whatsapp} alt="WhatsApp" style={{ width: "40px", marginRight: "6px" }} />
+
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={facebook} alt="Facebook" style={{ width: "50px", marginRight: "6px" }} />
+
+            </a>
+          </li>
         </ul>
-      </div>
+
+      </div >
 
       {/* FOOTER */}
-      <div className="footer">
+      < div className="footer" >
         <p>© 2024 Meu Portfólio. Todos os direitos reservados.</p>
-      </div>
+      </div >
     </>
   )
 }
