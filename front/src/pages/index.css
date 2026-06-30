@@ -292,6 +292,17 @@ body {
   width: 300px;
   max-width: 100%;
 }
+<<<<<<< HEAD
+=======
+.contact form button{
+  background-color: rgb(59, 238, 59);
+  border-radius: 15px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+} 
+>>>>>>> desenvolvimento
 
 .contact-info {
   font-size: 30px;
