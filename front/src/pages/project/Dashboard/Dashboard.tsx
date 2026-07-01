@@ -1,4 +1,5 @@
 // Importa o arquivo de estilos CSS específico para este componente
+import { Link } from 'react-router-dom'
 import './Dashboard.css'
 
 // Importa o componente Chart (gráfico) que criamos em outra pasta
@@ -54,7 +55,7 @@ function Dashboard() {
 
     if (jaExiste) {
       alert("Essa categoria já existe!") // ou pode só retornar sem alert
-      
+
       return
     }
 
@@ -108,6 +109,9 @@ function Dashboard() {
   // JSX (interface)
   return (
     <div className="dashboard">
+      <div className='voltar'>
+        <Link to="/" className="project-link">Ver Projeto</Link>
+      </div>
       {/* Cabeçalho */}
       <header className="dashboard-header">
         <h1>Dashboard Financeiro</h1>

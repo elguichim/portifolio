@@ -5,6 +5,7 @@ import Interruptor from "./components/Interruptor";
 import Disjuntor from "./components/Disjuntor";
 import Tomada from "./components/Tomada";   // 🔧 NOVO: importamos o componente Tomada
 import ObjectList from "./ui/ObjectList";
+import { Link } from 'react-router-dom';
 
 interface Point {
   x: number;
@@ -69,6 +70,9 @@ const Eletric: React.FC = () => {
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
+      <div className='voltar'>
+        <Link to="/" className="project-link">Ver Projeto</Link>
+      </div>
       <div style={{ width: "200px", background: "#333", color: "#fff", padding: "10px" }}>
         <ObjectList onAdd={handleAddObject} />
       </div>

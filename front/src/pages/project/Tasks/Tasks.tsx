@@ -1,6 +1,7 @@
 // Tasks.tsx
 import './Tasks.css';
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 // Interface que define o formato de uma tarefa
 interface Task {
@@ -63,6 +64,7 @@ const MovableBlock: React.FC<MovableBlockProps> = ({ task, removeTask, children 
   };
 
   return (
+
     <div
       className="movable-block"
       style={{
@@ -75,6 +77,8 @@ const MovableBlock: React.FC<MovableBlockProps> = ({ task, removeTask, children 
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
+
+
       {/* Cabeçalho do bloco */}
       {/* 📝 Anotação */}
       <h1>{task.title}</h1>
@@ -136,6 +140,9 @@ const Tasks: React.FC = () => {
 
   return (
     <div className="tasks">
+      <div className='voltar'>
+        <Link to="/" className="project-link">Ver Projeto</Link>
+      </div>
       <h1>Controle de Tarefas</h1>
       <input
         type="text"

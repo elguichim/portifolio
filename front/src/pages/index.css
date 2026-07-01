@@ -18,31 +18,116 @@ body {
   flex-direction: column;
 }
 
+/* ========== Responsividade =========== */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    padding: 0 5%;
+  }
+
+  .about {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .project-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skills-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 /* ================= HEADER ================= */
 .header {
   background-color: transparent;
   color: white;
   padding: 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-.header ul {
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9a6bff;
+}
+
+/* Menu principal */
+.menu {
   list-style: none;
-  display: flex;
+  display: flex; /* visível por padrão */
   gap: 20px;
   text-transform: uppercase;
 }
 
-.header ul li a {
+.menu li a {
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.header ul li a:hover {
+.menu li a:hover {
   color: #7e47ff;
+}
+
+/* Botão hamburguer */
+.hamburger {
+  display: none; /* escondido por padrão */
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Submenu dentro do botão hamburguer */
+.submenu {
+  list-style: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: rgba(0,0,0,0.9);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.submenu li a {
+  color: white;
+  text-decoration: none;
+}
+
+.submenu li a:hover {
+  color: #7e47ff;
+}
+
+/* Desktop: menu visível */
+@media (min-width: 769px) {
+  .menu {
+    display: flex; /* sempre visível no desktop */
+  }
+  .hamburger {
+    display: none; /* escondido no desktop */
+  }
+}
+
+/* Mobile: menu escondido */
+@media (max-width: 768px) {
+  .menu {
+    display: none; /* escondido no mobile */
+  }
+  .hamburger {
+    display: block; /* aparece só no mobile */
+  }
 }
 
 /* ================= HOME ================= */
@@ -51,29 +136,25 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 80vh;   /* 🔹 altura controlada */
+  min-height: 80vh;
   padding: 0 10%;
   z-index: 1;
-  overflow: hidden;   /* 🔹 corta a luz fora da área */
+  overflow: hidden;
 }
 
-/* 🔹 Div que segue o mouse */
 .light {
   position: absolute;
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  background: radial-gradient( circle, rgba(126, 71, 255, 0.6) 0%, rgba(4, 5, 14, 0) 50%);
+  background: radial-gradient(circle, rgba(126, 71, 255, 0.6) 0%, rgba(4, 5, 14, 0) 50%);
   filter: blur(80px);
   pointer-events: none;
   transform: translate(-50%, -50%);
   animation: pulse 2s infinite alternate ease-in-out;
   z-index: 0;
-
-
 }
 
-/* 🔹 Linha inferior com efeito */
 .home::after {
   content: "";
   position: absolute;
@@ -88,7 +169,6 @@ body {
   pointer-events: none;
 }
 
-/* 🔹 Animação de pulsação */
 @keyframes pulse {
   0% {
     opacity: 0.6;
@@ -100,7 +180,6 @@ body {
   }
 }
 
-/* Texto principal */
 .intro h1 {
   font-size: 3rem;
   font-weight: 600;
@@ -128,7 +207,7 @@ body {
   box-shadow: 0 0 25px rgba(126, 71, 255, 0.9);
 }
 
-/* Sobre mim */
+/* ================= ABOUT ================= */
 .about {
   max-width: 40%;
   text-align: left;
@@ -142,18 +221,6 @@ body {
 .about p {
   line-height: 1.6;
   color: #ddd;
-}
-
-/* ================= LINHA GRADIENTE ================= */
-.linha-gradient {
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(126, 71, 255, 0.6) 50%,
-    transparent 100%
-  );
 }
 
 /* ================= PROJECTS ================= */
@@ -173,15 +240,6 @@ body {
   gap: 30px;
   justify-content: center;
   padding: 20px;
-}
-
-.project-list::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  filter: blur(8px);
-  z-index: 0;
 }
 
 .project-item {
@@ -238,22 +296,6 @@ body {
   justify-content: center;
 }
 
-.skill-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(126, 71, 255, 0.6) 0%, rgba(4, 5, 14, 0) 50%);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  filter: blur(40px);
-}
-
-.skill-item:hover::before {
-  opacity: 1;
-}
-
 .skill-item:hover {
   transform: scale(1.1);
   transition: transform 0.5s ease;
@@ -275,13 +317,6 @@ body {
   text-align: center;
 }
 
-.contact form div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
 .contact input,
 .contact textarea {
   padding: 10px;
@@ -292,27 +327,12 @@ body {
   width: 300px;
   max-width: 100%;
 }
+
 .contact-info {
   font-size: 30px;
   display: flex;
   align-items: center;
   width: 100%;
-}
-
-.contact-info::before {
-  content: "";
-  flex: 1;
-  height: 4px;
-  margin-right: 10px;
-  background: linear-gradient(to right, transparent, rgba(126, 71, 255, 0.8));
-}
-
-.contact-info::after {
-  content: "";
-  flex: 1;
-  height: 4px;
-  margin-left: 10px;
-  background: linear-gradient(to left, transparent, rgba(126, 71, 255, 0.8));
 }
 
 .contact ul {

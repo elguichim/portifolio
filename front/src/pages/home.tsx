@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './index.css'
 
 // import de imagens
@@ -10,6 +10,7 @@ import facebook from "../assets/icones/facebook.png"
 function Home() {
   const homeRef = useRef<HTMLDivElement>(null)
   const lightRef = useRef<HTMLDivElement>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -21,7 +22,6 @@ function Home() {
         const x = event.clientX - rect.left
         const y = event.clientY - rect.top
 
-        // Atualiza posição da luz
         light.style.left = `${x}px`
         light.style.top = `${y}px`
       }
@@ -43,12 +43,30 @@ function Home() {
     <>
       {/* HEADER */}
       <div className="header">
-        <ul>
+        <div className="logo">Meu Portfólio</div>
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✖" : "☰"}
+          {menuOpen && (
+            <ul className="submenu">
+              <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
+              <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projetos</a></li>
+              <li><a href="#skills" onClick={() => setMenuOpen(false)}>Habilidades</a></li>
+              <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contato</a></li>
+            </ul>
+          )}
+        </button>
+
+        {/* Menu principal (desktop) */}
+        <ul className="menu">
           <li><a href="#home">Home</a></li>
           <li><a href="#projects">Projetos</a></li>
           <li><a href="#skills">Habilidades</a></li>
           <li><a href="#contact">Contato</a></li>
         </ul>
+
       </div>
 
       {/* HOME */}
@@ -56,7 +74,7 @@ function Home() {
         <div className="light" ref={lightRef}></div>
         <div className="intro">
           <h1>Bem-vindo ao meu <br /><span>Portfólio</span></h1>
-          <button>Saiba Mais</button>
+          <button>Saiba Mais.CV</button>
         </div>
 
         <div className="about">
@@ -96,22 +114,10 @@ function Home() {
       <div className="skills" id="skills">
         <h2>Habilidades</h2>
         <div className="skills-list">
-          <div className="skill-item">
-            <h1>JavaScript</h1>
-            <p>Experiência em desenvolvimento com JavaScript.</p>
-          </div>
-          <div className="skill-item">
-            <h1>React</h1>
-            <p>Conhecimento em construção de interfaces com React.</p>
-          </div>
-          <div className="skill-item">
-            <h1>Node.js</h1>
-            <p>Experiência em desenvolvimento com Node.js.</p>
-          </div>
-          <div className="skill-item">
-            <h1>CSS</h1>
-            <p>Conhecimento em estilização com CSS.</p>
-          </div>
+          <div className="skill-item"><h1>JavaScript</h1><p>Experiência em desenvolvimento com JavaScript.</p></div>
+          <div className="skill-item"><h1>React</h1><p>Conhecimento em construção de interfaces com React.</p></div>
+          <div className="skill-item"><h1>Node.js</h1><p>Experiência em desenvolvimento com Node.js.</p></div>
+          <div className="skill-item"><h1>CSS</h1><p>Conhecimento em estilização com CSS.</p></div>
         </div>
       </div>
 
@@ -123,7 +129,7 @@ function Home() {
             e.preventDefault()
             const name = (document.getElementById("name") as HTMLInputElement).value
             const message = (document.getElementById("message") as HTMLTextAreaElement).value
-            const phone = "5562993976071" // coloque seu número aqui
+            const phone = "5562993976071"
 
             const rawText = `Olá, meu nome é ${name}.\n${message}`
             const text = encodeURIComponent(rawText)
@@ -131,13 +137,8 @@ function Home() {
             window.open(`https://wa.me/${phone}?text=${text}`, "_blank")
           }}
         >
-          <div>
-            <input type="text" id="name" name="name" placeholder="Seu nome" />
-          </div>
-          <div>
-            <textarea id="message" name="message" placeholder="Sua mensagem"></textarea>
-          </div>
-
+          <div><input type="text" id="name" name="name" placeholder="Seu nome" /></div>
+          <div><textarea id="message" name="message" placeholder="Sua mensagem"></textarea></div>
           <button type="submit">
             Enviar Mensagem
             <img src={whatsapp} alt="WhatsApp" style={{ width: "20px", marginLeft: "8px" }} />
@@ -146,21 +147,9 @@ function Home() {
 
         <div className="contact-info">ou</div>
         <ul className="social-links">
-          <li>
-            <a href="#">
-              <img src={instagram} alt="Instagram" style={{ width: "40px", marginRight: "6px" }} />
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src={whatsapp} alt="WhatsApp" style={{ width: "40px", marginRight: "6px" }} />
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src={facebook} alt="Facebook" style={{ width: "50px", marginRight: "6px" }} />
-            </a>
-          </li>
+          <li><a href="#"><img src={instagram} alt="Instagram" style={{ width: "40px", marginRight: "6px" }} /></a></li>
+          <li><a href="#"><img src={whatsapp} alt="WhatsApp" style={{ width: "40px", marginRight: "6px" }} /></a></li>
+          <li><a href="#"><img src={facebook} alt="Facebook" style={{ width: "50px", marginRight: "6px" }} /></a></li>
         </ul>
       </div>
 
