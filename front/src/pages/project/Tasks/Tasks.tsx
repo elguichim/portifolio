@@ -139,9 +139,10 @@ const Tasks: React.FC = () => {
   };
 
   return (
+    
     <div className="tasks">
       <div className='voltar'>
-        <Link to="/" className="project-link">Ver Projeto</Link>
+        <a href="/" className="project-link">volta</a>
       </div>
       <h1>Controle de Tarefas</h1>
       <input

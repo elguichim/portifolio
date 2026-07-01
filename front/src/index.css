@@ -19,18 +19,6 @@ body {
 }
 
 /* ================= HEADER ================= */
-.header {
-  background-color: transparent;
-  color: white;
-  padding: 20px;
-  display: flex;
-  /* 🔹 precisa do flex */
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  /* 🔹 submenu se posiciona em relação ao header */
-  z-index: 10;
-}
 
 .logo {
   font-size: 1.5rem;
@@ -228,13 +216,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.project-item h3 {
-  border: solid 3px #ffffffc4;
-  padding: 5px;
-  width: 100%;
-  border-radius: 5px;
 }
 
 .project-item p {

@@ -110,7 +110,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className='voltar'>
-        <Link to="/" className="project-link">Ver Projeto</Link>
+        <a href="/" className="project-link">voltar</a>
       </div>
       {/* Cabeçalho */}
       <header className="dashboard-header">

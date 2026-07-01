@@ -1,3 +1,18 @@
+.voltar{
+  width: 70px;
+  height:40px;
+  padding: 5px;
+  text-align: center;
+  list-style: none;
+  border-radius: 50px;
+  background-color: #1e88e5;
+}
+.voltar a{
+  color: #eee;
+  text-decoration: none;
+
+}
+
 .dashboard {
   max-width: 900px;
   margin: 0 auto;

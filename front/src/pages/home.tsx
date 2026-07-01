@@ -91,21 +91,24 @@ function Home() {
         <h2>Projetos</h2>
         <div className="project-list">
           <div className="project-item">
+            <img src="./public/dashboard-financeiro.png" alt="Projeto 1" />
             <h3>Dashboard Financeiro</h3>
             <p>Um painel para controle de gastos e receitas, com gráficos e relatórios.</p>
-            <Link to="/dashboard" className="project-link">Ver Projeto</Link>
+            <a href="/dashboard" className="project-link">Ver Projeto</a>
           </div>
 
           <div className="project-item">
+            <img src="./public/tasks.png" alt="Projeto 2" />
             <h3>App de Tarefas</h3>
             <p>Organize suas tarefas do dia a dia com eficiência.</p>
-            <Link to="/tasks" className="project-link">Ver Projeto</Link>
+            <a href="/tasks" className="project-link">Ver Projeto</a>
           </div>
 
           <div className="project-item">
+            <img src="./public/eletric.png" alt="Projeto 3" />
             <h3>Sala de Elétrica</h3>
             <p>Planeje e crie circuitos elétricos.</p>
-            <Link to="/eletric" className="project-link">Ver Projeto</Link>
+            <a href="/eletric" className="project-link">Ver Projeto</a>
           </div>
         </div>
       </div>
