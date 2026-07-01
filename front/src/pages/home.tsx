@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import './index.css'
 
-// import de imagens!!!
+// import de imagens
 import whatsapp from "../assets/icones/WhatsApp.png"
 import instagram from "../assets/icones/Instagram.png"
 import facebook from "../assets/icones/facebook.png"
@@ -125,7 +125,6 @@ function Home() {
             const message = (document.getElementById("message") as HTMLTextAreaElement).value
             const phone = "5562993976071" // coloque seu número aqui
 
-            // Usando \n para quebra de linha
             const rawText = `Olá, meu nome é ${name}.\n${message}`
             const text = encodeURIComponent(rawText)
 
