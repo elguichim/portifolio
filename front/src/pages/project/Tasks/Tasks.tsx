@@ -1,8 +1,7 @@
 // Tasks.tsx
 import './Tasks.css';
 import React, { useState } from "react";
-// import { Link } from 'react-router-dom';
-
+// 
 // Interface que define o formato de uma tarefa
 interface Task {
   id: number;
