@@ -1,5 +1,5 @@
 // Importa o arquivo de estilos CSS específico para este componente
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import './Dashboard.css'
 
 // Importa o componente Chart (gráfico) que criamos em outra pasta

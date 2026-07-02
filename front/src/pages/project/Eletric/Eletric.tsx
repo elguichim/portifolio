@@ -5,7 +5,7 @@ import Interruptor from "./components/Interruptor";
 import Disjuntor from "./components/Disjuntor";
 import Tomada from "./components/Tomada";   // 🔧 NOVO: importamos o componente Tomada
 import ObjectList from "./ui/ObjectList";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 interface Point {
   x: number;
