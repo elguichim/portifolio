@@ -112,42 +112,137 @@ body {
   color: #7e47ff;
 }
 
-/* Desktop: menu visível */
+
+/* Desktop: mostra menu principal, esconde hamburguer/submenu min-width: 769px */
 @media (min-width: 769px) {
   .menu {
     display: flex;
-    /* sempre visível no desktop */
   }
 
   .hamburger {
     display: none;
-    /* escondido no desktop */
   }
+
+  .submenu {
+    display: none;
+  }
+
+
+
 }
 
-/* Mobile: menu escondido */
+/* Mobile: esconde menu principal, mostra hamburguer */
 @media (max-width: 768px) {
   .menu {
     display: none;
-    /* escondido no mobile */
   }
 
   .hamburger {
     display: block;
-    /* aparece só no mobile */
   }
+
+  .home {
+    height: 100vh;
+  }
+
+  .home .intro {
+    padding: 10% 0% 10% 0%;
+  }
+
+  .home .about {
+    /* padding: 10% 0% 10% 0%; */
+    background-color: #ffffff00;
+    width: 100%;
+    text-align: center;
+  }
+
 }
 
 /* ================= HOME ================= */
 .home {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  min-height: 80vh;
-  padding: 0 10%;
+  gap: 40px;
+
+  padding: 10%;
+  /* 0 10% */
   z-index: 1;
   overflow: hidden;
+
+  position: relative;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  gap: 40px;
+
+  padding: 10%;
+  /* 0 10% */
+  z-index: 1;
+  overflow: hidden;
+
+  justify-content: space-evenly;
+
+  /* background: linear-gradient(90deg, #6a00ff, #9a6bff); */
+
+}
+.intro {
+  max-width: 50%;
+  text-align: left;
+  width: 300%;
+  z-index: 1;
+}
+
+/* Texto principal */
+.intro h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.intro h1 span {
+  color: #9a6bff;
+  text-shadow: 0 0 10px rgba(126, 71, 255, 0.8);
+}
+
+.intro button {
+  margin-top: 20px;
+  padding: 0;
+  /* 10px 25px */
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #6a00ff, #9a6bff);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(126, 71, 255, 0.6);
+  transition: 0.3s;
+}
+
+.intro button:hover {
+  box-shadow: 0 0 25px rgba(126, 71, 255, 0.9);
+}
+
+/* Sobre mim */
+.about {
+  max-width: 40%;
+  margin: 0 10%;
+  width: 300%;
+  text-align: left;
+  background: #6d04ff00;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  
+  
+}
+
+.about p {
+  line-height: 1.6;
+  color: #ddd;
+  background: #6903f800;
 }
 
 .light {
@@ -220,7 +315,7 @@ body {
 .about {
   max-width: 700%;
   text-align: left;
-  background: #6a00ff00;
+  background: #6903f800;
 }
 
 .about h2 {
@@ -232,7 +327,7 @@ body {
   line-height: 1.6;
   color: #ddd;
   width: 100%;
-  
+
 }
 
 /* ================= PROJECTS ================= */
@@ -271,15 +366,16 @@ body {
 .project-item img {
   border: solid 3px #ffffffc4;
   padding: 5px;
-  width: 100%; 
-  
+  width: 100%;
+
 }
 
 .project-item p {
   text-align: center;
-  
+
 }
-.project-item a{
+
+.project-item a {
   color: rgb(0, 0, 0);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -337,6 +433,15 @@ body {
 .contact form {
   text-align: center;
 }
+/*  */
+
+.contact form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+/*  */
 
 .contact form button {
   border-radius: 50px;
@@ -361,6 +466,23 @@ body {
   align-items: center;
   width: 100%;
 }
+/*  */
+.contact-info::before {
+  content: "";
+  flex: 1;
+  height: 4px;
+  margin-right: 10px;
+  background: linear-gradient(to right, transparent, rgba(126, 71, 255, 0.8));
+}
+
+.contact-info::after {
+  content: "";
+  flex: 1;
+  height: 4px;
+  margin-left: 10px;
+  background: linear-gradient(to left, transparent, rgba(126, 71, 255, 0.8));
+}
+/*  */
 
 .contact ul {
   list-style: none;

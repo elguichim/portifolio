@@ -150,7 +150,7 @@ function Home() {
 
         <div className="contact-info">ou</div>
         <ul className="social-links">
-          <li><a href="#"><img src={instagram} alt="Instagram" style={{ width: "40px", marginRight: "6px" }} /></a></li>
+          <li><a href="https://www.instagram.com/elg_dev?utm_source=qr"><img src={instagram} alt="Instagram" style={{ width: "40px", marginRight: "6px" }} /></a></li>
           <li><a href="#"><img src={whatsapp} alt="WhatsApp" style={{ width: "40px", marginRight: "6px" }} /></a></li>
           <li><a href="#"><img src={facebook} alt="Facebook" style={{ width: "50px", marginRight: "6px" }} /></a></li>
         </ul>
