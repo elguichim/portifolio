@@ -80,9 +80,11 @@ function Home() {
         <div className="about">
           <h2>Sobre mim</h2>
           <p>
-            Sou desenvolvedor focado em criar soluções digitais modernas, com atenção ao design responsivo e à experiência do usuário.
-            Meu objetivo é transformar ideias em projetos funcionais e visualmente atraentes.
-          </p>
+
+            Estou iniciando minha jornada como desenvolvedor e construindo meus primeiros projetos.
+            Tenho interesse em aprender e aplicar boas práticas de programação, design responsivo
+            e desenvolvimento web moderno. Meu objetivo é evoluir constantemente e transformar
+            ideias em soluções digitais funcionais.aa          </p>
         </div>
       </div>
 
