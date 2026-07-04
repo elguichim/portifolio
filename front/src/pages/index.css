@@ -332,6 +332,9 @@ body {
 
 
 /* ================= PROJECTS ================= */
+
+/* From Uiverse.io by Pravins01 */
+
 .projects {
   display: flex;
   flex-direction: column;
@@ -341,7 +344,7 @@ body {
   padding: 20px 0;
 }
 
-.project-list {
+.projects .project-list {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -350,6 +353,73 @@ body {
   padding: 20px;
 }
 
+.projects .project-list .card {
+  position: relative;
+  width: 190px;
+  height: 254px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.projects .project-list .card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -5px;
+  margin: auto;
+  width: 200px;
+  height: 264px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.projects .project-list .card::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+.projects .project-list .card .heading {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.projects .project-list .card p:not(.heading) {
+  font-size: 14px;
+}
+
+.projects .project-list .card p:last-child {
+  color: #e81cff;
+  font-weight: 600;
+}
+
+.projects .project-list .card:hover::after {
+  filter: blur(30px);
+}
+
+.projects .project-list .card:hover::before {
+  transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+}
+
+
+
+ 
+/*
 .project-item {
   position: relative;
   z-index: 1;
@@ -383,7 +453,7 @@ body {
   border-radius: 50px;
   background-color: #d9d4e0;
   padding: 5px 10px;
-}
+} */
 
 /* ================= SKILLS ================= */
 .skills {
@@ -449,6 +519,10 @@ body {
 
 .contact form {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*  */
@@ -466,6 +540,28 @@ body {
   border-radius: 50px;
   padding: 10px;
   background-color: #d9d4e0;
+
+}
+
+button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 25px;
+  border: none;
+  width: 40vh;
+  display: flex;
+  border-radius: 25px;
+  justify-content: center;
+  background: linear-gradient(90deg, #6a00ff, #9a6bff);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(126, 71, 255, 0.6);
+  transition: 0.3s;
+}
+
+.intro button:hover {
+  box-shadow: 0 0 25px rgba(126, 71, 255, 0.9);
 }
 
 .contact input,

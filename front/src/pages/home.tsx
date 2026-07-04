@@ -91,6 +91,55 @@ function Home() {
       {/* PROJETOS */}
       <div className="projects" id="projects">
         <h2>Projetos</h2>
+        <p>Confira alguns dos meus projetos recentes e explore minhas habilidades em desenvolvimento web.</p>
+        <div className="project-list">
+          <div className="card">
+            <img src="./dashboard-financeiro.png" alt="Projeto 1" />
+            <p className="heading">
+              Popular this month
+            </p>
+            <p>
+              Powered By
+            </p>
+            <p>
+              <a href="/dashboard" className="project-link">Ver Projeto</a>
+            </p>
+          </div>
+          {/* ==== */}
+          <div className="card">
+            <img src="./tasks.png" alt="Projeto 2" />
+            <p className="heading">
+              Popular this month
+            </p>
+            <p>
+              Powered By
+            </p>
+            <p>
+              <a href="/tasks" className="project-link">Ver Projeto</a>
+            </p>
+          </div>
+          {/* ==== */}
+          <div className="card">
+            <img src="./eletric.png" alt="Projeto 3" />
+            <p className="heading">
+              Popular this month
+            </p>
+            <p>
+              Powered By
+            </p>
+            <p>
+              <a href="/eletric" className="project-link">Ver Projeto</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+      {/* <div className="projects" id="projects">
+        <h2>Projetos</h2>
         <div className="project-list">
           <div className="project-item">
             <img src="./dashboard-financeiro.png" alt="Projeto 1" />
@@ -113,7 +162,7 @@ function Home() {
             <a href="/eletric" className="project-link">Ver Projeto</a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* HABILIDADES */}
       <div className="skills" id="skills">

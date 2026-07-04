@@ -138,44 +138,60 @@ const Tasks: React.FC = () => {
   };
 
   return (
-    
-    <div className="tasks">
-      <div className='voltar'>
+    <div style={{ position: "relative", width: "100%", height: "100vh" }}>
+      <div className='tasks-voltar' >
         <a href="/" className="project-link">volta</a>
+        <button
+          className="btn info-btn"
+          onClick={() =>
+            alert("Instruções de uso:\n\n1. Arraste os componentes para o quadro.\n2. Clique nos pontos verdes para criar conexões.\n3. Use o botão Voltar para retornar à página inicial.")
+          }
+        >
+          Instruções
+        </button>
       </div>
-      <h1>Controle de Tarefas</h1>
-      <input
-        type="text"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Nova tarefa..."
-      />
-      <button onClick={addTask}>Adicionar</button>
+      <div className="tasks">
 
-      {/* Lista simples de tarefas */}
-      <ul>
+        <h1>Controle de Tarefas</h1>
+        <div className="task-input">
+          <input
+            type="text"
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            placeholder="Nova tarefa..."
+          />
+          <button onClick={addTask}>Adicionar</button>
+
+        </div>
+
+        {/* Lista simples de tarefas */}
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <span
+                style={{
+                  textDecoration: task.completed ? "line-through" : "none",
+                }}
+                onClick={() => toggleTask(task.id)}
+              >
+                {task.title}
+              </span>
+              <button onClick={() => removeTask(task.id)}>Excluir</button>
+            </li>
+          ))}
+        </ul>
+
+        {/* Blocos móveis de anotações */}
         {tasks.map((task) => (
-          <li key={task.id}>
-            <span
-              style={{
-                textDecoration: task.completed ? "line-through" : "none",
-              }}
-              onClick={() => toggleTask(task.id)}
-            >
-              {task.title}
-            </span>
-            <button onClick={() => removeTask(task.id)}>Excluir</button>
-          </li>
+          <MovableBlock key={task.id} task={task} removeTask={removeTask}>
+            <p></p>
+          </MovableBlock>
         ))}
-      </ul>
+      </div>
 
-      {/* Blocos móveis de anotações */}
-      {tasks.map((task) => (
-        <MovableBlock key={task.id} task={task} removeTask={removeTask}>
-          <p></p>
-        </MovableBlock>
-      ))}
+
     </div>
+
   );
 };
 

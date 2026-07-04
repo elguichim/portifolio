@@ -1,9 +1,11 @@
+/* Layout principal */
 .eletric-layout {
   display: flex;
   height: 100vh;
   background-color: #f4f4f4;
 }
 
+/* Sidebar lateral */
 .eletric-sidebar {
   width: 250px;
   background-color: #222;
@@ -12,6 +14,44 @@
   overflow-y: auto;
 }
 
+/* Grupo de botões (Voltar + Instruções) */
+.button-group {
+  display: flex;       /* coloca os botões lado a lado */
+  align-items: center; /* alinha os botões verticalmente */
+  gap: 10px;           /* espaço entre eles */
+  margin-bottom: 15px; /* separação da lista de objetos */
+  background: #0066cc00;
+}
+
+/* Estilo base dos botões */
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  height: 36px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #666;
+}
+
+/* Botão de instruções com cor diferente */
+.info-btn {
+  background: #0066cc;
+}
+
+.info-btn:hover {
+  background: #005bb5;
+}
+
+/* Área principal */
 .eletric-main {
   flex: 1;
   display: flex;
@@ -19,6 +59,7 @@
   align-items: center;
 }
 
+/* Stage (quadro de desenho) */
 .eletric-stage {
   border: 2px solid #333;
   background-color: #fff;

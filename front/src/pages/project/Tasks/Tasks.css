@@ -1,3 +1,33 @@
+div .tasks-voltar {
+  display: flex;
+  justify-content:space-between;
+  padding: 10px;
+
+  z-index: 1000;
+
+  width: 100%;
+
+
+  background: #2d476333;
+}
+div .tasks-voltar a {
+  padding: 8px 16px;
+  margin: 10px 0;
+  height: 36px;
+  background: #0a61bd;
+  color: white;
+
+  text-decoration: none;
+  text-align: center;
+  height: 100%;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+
+
 /* Container principal da página de tarefas */
 .tasks {
   font-family: Arial, sans-serif;
@@ -14,6 +44,12 @@
   text-align: center;
   color: #222;
   font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+.tasks .task-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -35,6 +71,7 @@
 /* Botões gerais */
 .tasks button {
   padding: 12px 18px;
+  width: 120px;
   background: #007bff;
   border: none;
   border-radius: 8px;
