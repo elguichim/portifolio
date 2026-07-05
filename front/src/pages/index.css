@@ -455,18 +455,19 @@ body {
   flex-direction: column;
   align-items: center;
 
-  justify-content:space-between;
+  justify-content:space-around;
   padding: 20px 0%;
-  margin: 30px 0;
-  height: 45vh;
-  background: #00bbd400;
+  
+  margin: 30px 0 ;
+  height: 27rem;
+  background: #6da9b100;
 }
 .skills h2{
   background-color: #4caf4f00;
 }
 
 .container {
-  background: #15163a00;
+ 
 
   perspective: 1000px;
   /* dá profundidade ao efeito 3D */
@@ -602,7 +603,7 @@ body {
   align-items: center;
   gap: 10px;
   padding: 20px;
-  margin: 10%;
+  margin: 3%;
   border: solid 3px #29106eb7;
   border-radius: 10px;
 }

@@ -1,26 +1,28 @@
 /* Layout principal */
 .eletric-layout {
   display: flex;
+  flex-direction: row;   /* sempre lado a lado */
   height: 100vh;
   background-color: #f4f4f4;
+  overflow: hidden;
 }
 
 /* Sidebar lateral */
 .eletric-sidebar {
-  width: 250px;
+  flex: 0 0 250px;       /* largura fixa padrão */
   background-color: #222;
   color: #fff;
   padding: 10px;
   overflow-y: auto;
+  min-width: 50px;      /* nunca fica menor que isso */
 }
 
 /* Grupo de botões (Voltar + Instruções) */
 .button-group {
-  display: flex;       /* coloca os botões lado a lado */
-  align-items: center; /* alinha os botões verticalmente */
-  gap: 10px;           /* espaço entre eles */
-  margin-bottom: 15px; /* separação da lista de objetos */
-  background: #0066cc00;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 /* Estilo base dos botões */
@@ -36,6 +38,7 @@
   font-size: 14px;
   height: 36px;
   transition: background 0.2s ease;
+  white-space: nowrap;   /* não quebra texto */
 }
 
 .btn:hover {
@@ -53,10 +56,11 @@
 
 /* Área principal */
 .eletric-main {
-  flex: 1;
+  flex: 1;               /* ocupa todo o espaço restante */
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
 /* Stage (quadro de desenho) */
@@ -64,4 +68,54 @@
   border: 2px solid #333;
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* ========================= */
+/* Responsividade            */
+/* ========================= */
+
+/* Telas menores que 768px */
+@media (max-width: 768px) {
+  .eletric-layout {
+    flex-direction: row;   /* mantém lado a lado */
+  }
+
+  .eletric-sidebar {
+    flex: 0 0 200px;       /* sidebar mais estreita */
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 6px 10px;
+    height: auto;
+  }
+
+  .eletric-stage {
+    width: 100% !important;
+    height: 37vh !important;
+    background: red;
+  }
+}
+
+/* Telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+  .eletric-sidebar {
+    flex: 0 0 150px;       /* sidebar ainda menor */
+    padding: 10px;
+    
+  }
+
+  .btn {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .eletric-stage {
+    width: 100% !important;
+    height:  37vh !important;
+  }
 }
