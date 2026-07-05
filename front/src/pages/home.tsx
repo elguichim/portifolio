@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import './index.css'
 
@@ -39,144 +38,123 @@ function Home() {
     }
   }, [])
 
+  // Lista de projetos para evitar repetição
+  const projects = [
+    {
+      img: "./dashboard-financeiro.png",
+      title: "Dashboard Financeiro",
+      description: "Controle de gastos e receitas com gráficos.",
+      link: "/dashboard"
+    },
+    {
+      img: "./tasks.png",
+      title: "App de Tarefas",
+      description: "Organize suas tarefas do dia a dia com eficiência.",
+      link: "/tasks"
+    },
+    {
+      img: "./eletric.png",
+      title: "Sala de Elétrica",
+      description: "Planeje e crie circuitos elétricos.",
+      link: "/eletric"
+    }
+  ]
+
   return (
     <>
       {/* HEADER */}
-      <div className="header">
+      <header className="header">
         <div className="logo">Meu Portfólio</div>
-        <button
-          className="hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? "✖" : "☰"}
-          {menuOpen && (
-            <ul className="submenu">
-              <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-              <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projetos</a></li>
-              <li><a href="#skills" onClick={() => setMenuOpen(false)}>Habilidades</a></li>
-              <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contato</a></li>
+        <div>
+          <button
+            className="hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? "✖" : "☰"}
+            {menuOpen && (
+              <ul className="submenu">
+                <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
+                <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projetos</a></li>
+                <li><a href="#skills" onClick={() => setMenuOpen(false)}>Habilidades</a></li>
+                <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contato</a></li>
+              </ul>
+            )}
+          </button>
+
+          {/* Menu principal (desktop) */}
+          <nav>
+            <ul className="menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#projects">Projetos</a></li>
+              <li><a href="#skills">Habilidades</a></li>
+              <li><a href="#contact">Contato</a></li>
             </ul>
-          )}
-        </button>
+          </nav>
 
-        {/* Menu principal (desktop) */}
-        <ul className="menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#projects">Projetos</a></li>
-          <li><a href="#skills">Habilidades</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
+        </div>
 
-      </div>
+      </header>
 
       {/* HOME */}
-      <div className="home" id="home" ref={homeRef}>
+      <section className="home" id="home" ref={homeRef}>
         <div className="light" ref={lightRef}></div>
         <div className="intro">
           <h1>Bem-vindo ao meu <br /><span>Portfólio</span></h1>
           <button>Saiba Mais.CV</button>
         </div>
 
-        <div className="about">
+        <article className="about">
           <h2>Sobre mim</h2>
           <p>
-
             Estou iniciando minha jornada como desenvolvedor e construindo meus primeiros projetos.
             Tenho interesse em aprender e aplicar boas práticas de programação, design responsivo
             e desenvolvimento web moderno. Meu objetivo é evoluir constantemente e transformar
-            ideias em soluções digitais funcionais.aa          </p>
-        </div>
-      </div>
+            ideias em soluções digitais funcionais.
+          </p>
+        </article>
+      </section>
 
       {/* PROJETOS */}
-      <div className="projects" id="projects">
+      <section className="projects" id="projects">
         <h2>Projetos</h2>
         <p>Confira alguns dos meus projetos recentes e explore minhas habilidades em desenvolvimento web.</p>
         <div className="project-list">
-          <div className="card">
-            <img src="./dashboard-financeiro.png" alt="Projeto 1" />
-            <p className="heading">
-              Popular this month
-            </p>
-            <p>
-              Powered By
-            </p>
-            <p>
-              <a href="/dashboard" className="project-link">Ver Projeto</a>
-            </p>
-          </div>
-          {/* ==== */}
-          <div className="card">
-            <img src="./tasks.png" alt="Projeto 2" />
-            <p className="heading">
-              Popular this month
-            </p>
-            <p>
-              Powered By
-            </p>
-            <p>
-              <a href="/tasks" className="project-link">Ver Projeto</a>
-            </p>
-          </div>
-          {/* ==== */}
-          <div className="card">
-            <img src="./eletric.png" alt="Projeto 3" />
-            <p className="heading">
-              Popular this month
-            </p>
-            <p>
-              Powered By
-            </p>
-            <p>
-              <a href="/eletric" className="project-link">Ver Projeto</a>
-            </p>
-          </div>
-
+          {projects.map((proj, index) => (
+            <article className="card" key={index}>
+              <img src={proj.img} alt={proj.title} className="card-image" />
+              <div className="card-overlay">
+                <h3 className="card-title">{proj.title}</h3>
+                <p className="card-description">{proj.description}</p>
+                <a href={proj.link} className="card-link">Ver Projeto</a>
+              </div>
+            </article>
+          ))}
         </div>
-      </div>
-
-
-
-
-      {/* <div className="projects" id="projects">
-        <h2>Projetos</h2>
-        <div className="project-list">
-          <div className="project-item">
-            <img src="./dashboard-financeiro.png" alt="Projeto 1" />
-            <h3>Dashboard Financeiro</h3>
-            <p>Um painel para controle de gastos e receitas, com gráficos e relatórios.</p>
-            <a href="/dashboard" className="project-link">Ver Projeto</a>
-          </div>
-
-          <div className="project-item">
-            <img src="./tasks.png" alt="Projeto 2" />
-            <h3>App de Tarefas</h3>
-            <p>Organize suas tarefas do dia a dia com eficiência.</p>
-            <a href="/tasks" className="project-link">Ver Projeto</a>
-          </div>
-
-          <div className="project-item">
-            <img src="./eletric.png" alt="Projeto 3" />
-            <h3>Sala de Elétrica</h3>
-            <p>Planeje e crie circuitos elétricos.</p>
-            <a href="/eletric" className="project-link">Ver Projeto</a>
-          </div>
-        </div>
-      </div> */}
+      </section>
 
       {/* HABILIDADES */}
-      <div className="skills" id="skills">
-        <h2>Habilidades</h2>
-        <div className="skills-list">
-          <div className="skill-item"><h1>JavaScript</h1><p>Experiência em desenvolvimento com JavaScript.</p></div>
-          <div className="skill-item"><h1>React</h1><p>Conhecimento em construção de interfaces com React.</p></div>
-          <div className="skill-item"><h1>Node.js</h1><p>Experiência em desenvolvimento com Node.js.</p></div>
-          <div className="skill-item"><h1>CSS</h1><p>Conhecimento em estilização com CSS.</p></div>
+      <section className="skills" id="skills">
+         <div className="container">
+        <div className="box-card">
+            <div className="face front"><h3>JavaScript</h3></div>
+            <div className="face back"><h3>MySQL</h3></div>
+            <div className="face right"><h3>React</h3></div>
+            <div className="face left"><h3>Node.js</h3></div>
+            <div className="face top"><h3>CSS</h3></div>
+            <div className="face bottom"><h3>HTML</h3></div>
         </div>
-      </div>
+    </div>
+        {/* <h2>Habilidades</h2>
+        <div className="skills-list">
+          <div className="skill-item"><h3>JavaScript</h3><p>Experiência em desenvolvimento com JavaScript.</p></div>
+          <div className="skill-item"><h3>React</h3><p>Conhecimento em construção de interfaces com React.</p></div>
+          <div className="skill-item"><h3>Node.js</h3><p>Experiência em desenvolvimento com Node.js.</p></div>
+          <div className="skill-item"><h3>CSS</h3><p>Conhecimento em estilização com CSS.</p></div>
+        </div> */}
+      </section>
 
       {/* CONTATO */}
-      <div className="contact" id="contact">
+      <section className="contact" id="contact">
         <h2>Entre em contato</h2>
         <form
           onSubmit={(e) => {
@@ -205,12 +183,12 @@ function Home() {
           <li><a href="#"><img src={whatsapp} alt="WhatsApp" style={{ width: "40px", marginRight: "6px" }} /></a></li>
           <li><a href="#"><img src={facebook} alt="Facebook" style={{ width: "50px", marginRight: "6px" }} /></a></li>
         </ul>
-      </div>
+      </section>
 
       {/* FOOTER */}
-      <div className="footer">
+      <footer className="footer">
         <p>© 2024 Meu Portfólio. Todos os direitos reservados.</p>
-      </div>
+      </footer>
     </>
   )
 }
