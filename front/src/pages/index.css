@@ -554,9 +554,15 @@ body {
 
 /* Responsividade */
 @media (max-width: 768px) {
-  /* .box-card {
+   .box-card {
     width: 150px;
     height: 150px;
+    
+  }
+  .face {
+    width: 150px;
+    height: 150px;
+    font-size: 1.2rem;
   }
 
   .front {
@@ -581,7 +587,7 @@ body {
 
   .bottom {
     transform: translateY(75px) rotateX(-90deg);
-  } */
+  } 
 }
 
 /* ================= CONTACT ================= */
