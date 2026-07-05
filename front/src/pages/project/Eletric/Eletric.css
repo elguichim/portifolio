@@ -67,7 +67,7 @@
 .eletric-stage {
   border: 2px solid #333;
   background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.548);
   max-width: 100%;
   max-height: 100%;
   overflow: hidden;
@@ -96,8 +96,8 @@
 
   .eletric-stage {
     width: 100% !important;
-    height: 37vh !important;
-    background: red;
+    height: 100% !important; 
+  
   }
 }
 
@@ -116,6 +116,6 @@
 
   .eletric-stage {
     width: 100% !important;
-    height:  37vh !important;
+    height:  100% !important;
   }
 }

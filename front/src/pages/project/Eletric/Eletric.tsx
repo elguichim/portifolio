@@ -98,8 +98,10 @@ const Eletric: React.FC = () => {
       <div className="eletric-main">
         <Stage
           className="eletric-stage"
-          width={800}
-          height={600}
+          width={window.innerWidth}
+          height={window.innerHeight}
+          // width={800}
+          // height={600}
           onMouseMove={(e) => {
             const pos = e.target.getStage()?.getPointerPosition();
             if (pos) handleMoveConnection(pos.x, pos.y);
