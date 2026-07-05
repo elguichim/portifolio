@@ -125,7 +125,6 @@ body {
   overflow: hidden;
   z-index: 1;
 
-
 }
 
 .intro {
@@ -277,12 +276,11 @@ body {
   }
 
   .home {
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    background: #6a00ff00;
 
   }
 
@@ -457,12 +455,18 @@ body {
   flex-direction: column;
   align-items: center;
 
-  justify-content: center;
+  justify-content:space-between;
   padding: 20px 0%;
-  height: 40vh;
+  margin: 30px 0;
+  height: 45vh;
+  background: #00bbd400;
+}
+.skills h2{
+  background-color: #4caf4f00;
 }
 
 .container {
+  background: #646cff;
 
   perspective: 1000px;
   /* dá profundidade ao efeito 3D */
@@ -554,11 +558,12 @@ body {
 
 /* Responsividade */
 @media (max-width: 768px) {
-   .box-card {
+  .box-card {
     width: 150px;
     height: 150px;
-    
+
   }
+
   .face {
     width: 150px;
     height: 150px;
@@ -587,7 +592,7 @@ body {
 
   .bottom {
     transform: translateY(75px) rotateX(-90deg);
-  } 
+  }
 }
 
 /* ================= CONTACT ================= */
@@ -651,8 +656,20 @@ body {
   border: solid 1px #ffffff65;
   background-color: transparent;
   color: white;
-  width: 300px;
+  width: 320px;
   max-width: 100%;
+}
+
+@media (max-width: 768px) {
+
+  .contact input,
+  .contact textarea {
+    width: 220px;
+
+    background: #646cff;
+
+  }
+
 }
 
 .contact-info {

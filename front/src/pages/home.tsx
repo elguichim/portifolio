@@ -134,16 +134,17 @@ function Home() {
 
       {/* HABILIDADES */}
       <section className="skills" id="skills">
-         <div className="container">
-        <div className="box-card">
+         <h2>Habilidades</h2>
+        <div className="container">
+          <div className="box-card">
             <div className="face front"><h3>JavaScript</h3></div>
             <div className="face back"><h3>MySQL</h3></div>
             <div className="face right"><h3>React</h3></div>
             <div className="face left"><h3>Node.js</h3></div>
             <div className="face top"><h3>CSS</h3></div>
             <div className="face bottom"><h3>HTML</h3></div>
+          </div>
         </div>
-    </div>
         {/* <h2>Habilidades</h2>
         <div className="skills-list">
           <div className="skill-item"><h3>JavaScript</h3><p>Experiência em desenvolvimento com JavaScript.</p></div>
