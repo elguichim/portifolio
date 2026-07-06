@@ -109,8 +109,34 @@ function Dashboard() {
   // JSX (interface)
   return (
     <div className="dashboard">
-      <div className='voltar'>
-        <a href="/" className="project-link">voltar</a>
+      <div className='dashboard-voltar'>
+        <a href="/" className="dashboard-link">voltar</a>
+        <button
+          className="btn info-btn"
+          onClick={() =>
+            alert(
+              "Instruções de uso:\n\n" +
+              "1. Crie categorias para organizar suas transações (ex.: Alimentação, Transporte, Lazer).\n" +
+              "2. Clique em uma categoria para selecioná-la antes de adicionar uma transação.\n" +
+              "3. Escolha o tipo da transação (Entrada ou Saída).\n" +
+              "4. Informe o valor numérico da transação.\n" +
+              "5. Clique em 'Adicionar' para registrar a transação.\n\n" +
+              "Resumo:\n" +
+              "- As Entradas somam receitas.\n" +
+              "- As Saídas somam despesas.\n" +
+              "- O Saldo é calculado automaticamente (Entradas - Saídas).\n\n" +
+              "Extras:\n" +
+              "- O gráfico mostra a proporção entre receitas e despesas.\n" +
+              "- A lista exibe todas as transações registradas.\n" +
+              "- Use o botão Voltar para retornar à página inicial.\n\n" +
+              "Dica: mantenha suas categorias organizadas para facilitar o controle financeiro!"
+            )
+          }
+        >
+          Instruções
+        </button>
+
+
       </div>
       {/* Cabeçalho */}
       <header className="dashboard-header">

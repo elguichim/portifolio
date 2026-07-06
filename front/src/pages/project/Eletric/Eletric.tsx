@@ -85,11 +85,25 @@ const Eletric: React.FC = () => {
           <button
             className="btn info-btn"
             onClick={() =>
-              alert("Instruções de uso:\n\n1. Arraste os componentes para o quadro.\n2. Clique nos pontos verdes para criar conexões.\n3. Use o botão Voltar para retornar à página inicial.")
+              alert(
+                "Instruções de uso:\n\n" +
+                "1. Arraste os componentes (lâmpada, interruptor, disjuntor, tomada) para o quadro de desenho.\n" +
+                "2. Clique nos pontos verdes dos componentes para iniciar ou finalizar conexões.\n" +
+                "3. As conexões aparecem como linhas pretas; você pode removê-las com duplo clique.\n" +
+                "4. Enquanto cria uma conexão, uma linha vermelha tracejada mostra o caminho temporário.\n" +
+                "5. Use o botão 'Voltar' para retornar à página inicial.\n" +
+                "6. No Dashboard Financeiro, adicione categorias e transações (Entrada ou Saída).\n" +
+                "7. Cada categoria mostra o total acumulado e pode ser selecionada para novas transações.\n" +
+                "8. O resumo exibe Entrada, Saída e Saldo atualizados automaticamente.\n" +
+                "9. O gráfico mostra a proporção entre receitas e despesas.\n" +
+                "10. A lista de transações detalha cada operação registrada.\n\n" +
+                "Dica: Em dispositivos móveis, arraste com o dedo e use os botões para navegar."
+              )
             }
           >
             Instruções
           </button>
+
         </div>
         <ObjectList onAdd={handleAddObject} />
       </div>

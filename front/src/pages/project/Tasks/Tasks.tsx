@@ -1,15 +1,13 @@
 // Tasks.tsx
 import './Tasks.css';
 import React, { useState } from "react";
-// 
-// Interface que define o formato de uma tarefa
+
 interface Task {
   id: number;
   title: string;
   completed: boolean;
 }
 
-// Lista de cores suaves estilo post-it
 const postitColors: string[] = [
   "#fff9c4", // amarelo claro
   "#c8e6c9", // verde claro
@@ -19,21 +17,18 @@ const postitColors: string[] = [
   "#d1c4e9"  // lilás claro
 ];
 
-// Props do bloco móvel
 interface MovableBlockProps {
   task: Task;
   removeTask: (id: number) => void;
   children?: React.ReactNode;
 }
 
-// Componente que representa um bloco móvel individual
 const MovableBlock: React.FC<MovableBlockProps> = ({ task, removeTask, children }) => {
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: Math.random() * 400,
     y: Math.random() * 400,
   });
 
-  // Cada bloco recebe uma cor aleatória ao ser criado
   const [color] = useState<string>(
     postitColors[Math.floor(Math.random() * postitColors.length)]
   );
@@ -63,26 +58,20 @@ const MovableBlock: React.FC<MovableBlockProps> = ({ task, removeTask, children 
   };
 
   return (
-
     <div
       className="movable-block"
       style={{
         left: position.x,
         top: position.y,
         position: "absolute",
-        backgroundColor: color, // aplica cor aleatória
+        backgroundColor: color,
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
-
-
-      {/* Cabeçalho do bloco */}
-      {/* 📝 Anotação */}
       <h1>{task.title}</h1>
 
-      {/* Checklist dentro do bloco */}
       <label className="task-line">
         <input type="checkbox" />
         <input type="text" placeholder="Digite aqui..." />
@@ -100,16 +89,12 @@ const MovableBlock: React.FC<MovableBlockProps> = ({ task, removeTask, children 
         <input type="text" placeholder="Digite aqui..." />
       </label>
 
-      {/* Botão de excluir */}
       <button onClick={() => removeTask(task.id)}>Excluir</button>
-
-      {/* Conteúdo extra passado como children */}
       {children}
     </div>
   );
 };
 
-// Componente principal de tarefas
 const Tasks: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState("");
@@ -139,19 +124,28 @@ const Tasks: React.FC = () => {
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh" }}>
-      <div className='tasks-voltar' >
-        <a href="/" className="project-link">volta</a>
+      <div className="tasks-voltar">
+        <a href="/" className="project-link">Voltar</a>
         <button
           className="btn info-btn"
           onClick={() =>
-            alert("Instruções de uso:\n\n1. Arraste os componentes para o quadro.\n2. Clique nos pontos verdes para criar conexões.\n3. Use o botão Voltar para retornar à página inicial.")
+            alert(
+              "📌 Instruções de uso:\n\n" +
+              "1. Digite uma nova tarefa no campo e clique em 'Adicionar'.\n" +
+              "2. Cada tarefa aparece na lista e também como um post-it móvel.\n" +
+              "3. Arraste os post-its para qualquer lugar do quadro.\n" +
+              "4. Use os checkboxes e campos de texto dentro dos post-its para anotações rápidas.\n" +
+              "5. Clique no título da tarefa na lista para marcar como concluída.\n" +
+              "6. Use o botão 'Excluir' para remover tarefas ou post-its.\n" +
+              "7. O botão 'Voltar' retorna para a página inicial."
+            )
           }
         >
           Instruções
         </button>
       </div>
-      <div className="tasks">
 
+      <div className="tasks">
         <h1>Controle de Tarefas</h1>
         <div className="task-input">
           <input
@@ -161,10 +155,8 @@ const Tasks: React.FC = () => {
             placeholder="Nova tarefa..."
           />
           <button onClick={addTask}>Adicionar</button>
-
         </div>
 
-        {/* Lista simples de tarefas */}
         <ul>
           {tasks.map((task) => (
             <li key={task.id}>
@@ -181,17 +173,13 @@ const Tasks: React.FC = () => {
           ))}
         </ul>
 
-        {/* Blocos móveis de anotações */}
         {tasks.map((task) => (
           <MovableBlock key={task.id} task={task} removeTask={removeTask}>
             <p></p>
           </MovableBlock>
         ))}
       </div>
-
-
     </div>
-
   );
 };
 
