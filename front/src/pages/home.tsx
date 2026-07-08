@@ -77,6 +77,7 @@ function Home() {
                 <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projetos</a></li>
                 <li><a href="#skills" onClick={() => setMenuOpen(false)}>Habilidades</a></li>
                 <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contato</a></li>
+                <li><a href="/login" className="login-btn" onClick={() => setMenuOpen(false)}>LOGIN</a></li>
               </ul>
             )}
           </button>
@@ -88,6 +89,7 @@ function Home() {
               <li><a href="#projects">Projetos</a></li>
               <li><a href="#skills">Habilidades</a></li>
               <li><a href="#contact">Contato</a></li>
+              <li><a href="/login" >LOGIN</a></li>
             </ul>
           </nav>
 
@@ -134,7 +136,7 @@ function Home() {
 
       {/* HABILIDADES */}
       <section className="skills" id="skills">
-         <h2>Habilidades</h2>
+        <h2>Habilidades</h2>
         <div className="container">
           <div className="box-card">
             <div className="face front"><h3>JavaScript</h3></div>
