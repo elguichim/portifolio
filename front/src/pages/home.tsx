@@ -89,7 +89,7 @@ function Home() {
               <li><a href="#projects">Projetos</a></li>
               <li><a href="#skills">Habilidades</a></li>
               <li><a href="#contact">Contato</a></li>
-              <li><a href="/login" >LOGIN</a></li>
+              <li><a href="https://subscribers-dashboar.vercel.app/" >LOGIN</a></li>
             </ul>
           </nav>
 
